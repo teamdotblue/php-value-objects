@@ -1,0 +1,14 @@
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    ignoreErrors:
+        - '#^Static method (.*)::__itemType\(\) is unused.$#'
+        - '#^Static method (.*)::__allowNestedSchema\(\) is unused.$#'
+        - '#of function (int|str|float)val expects #'
+services:
+    -
+        class: TeamBlue\JsonImmutableObjects\PhpStan\PropertiesExtension
+        tags:
+            - phpstan.properties.readWriteExtension

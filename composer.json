@@ -1,0 +1,68 @@
+{
+    "name": "team-blue/php-value-objects",
+    "type": "library",
+    "description": "Value objects",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arne De Smedt",
+            "email": "arnedesmdt@gmail.com",
+            "homepage": "https://github.com/arnedesmedt"
+        }
+    ],
+    "require": {
+        "php": "^8.0 || ^8.1 || ^8.2 || ^8.3",
+        "ext-intl": "*",
+        "ext-json": "*",
+        "ramsey/uuid": "~4.0",
+        "symfony/http-kernel": "~6.0 || ~7.0 || ~8.0",
+        "team-blue/php-exception": "^1.1.6"
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "~12.0",
+        "phpmd/phpmd": "~2.0",
+        "phpro/grumphp": "~2.0",
+        "phpstan/phpstan": "~1.0",
+        "phpunit/phpunit": "~10.0",
+        "rector/rector": "~1.1",
+        "squizlabs/php_codesniffer": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TeamBlue\\ValueObjects\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TeamBlue\\ValueObjects\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-main": "2.2.x-dev"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpro/grumphp": true
+        },
+        "sort-packages": true
+    },
+    "scripts-descriptions": {
+        "tests": "Run all tests"
+    },
+    "scripts": {
+        "tests": [
+            "vendor/bin/phpcbf",
+            "vendor/bin/phpcs",
+            "vendor/bin/phpstan analyze --no-progress",
+            "vendor/bin/phpmd src text phpmd.xml",
+            "vendor/bin/phpmd tests text phpmd-tests.xml",
+            "vendor/bin/rector --dry-run --no-progress-bar",
+            "vendor/bin/phpunit"
+        ]
+    }
+}
